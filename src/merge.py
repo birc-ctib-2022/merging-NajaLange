@@ -1,6 +1,9 @@
 """Code for merging two sorted lists."""
 
 
+from ast import Break
+
+
 def merge(x: list[int], y: list[int]) -> list[int]:
     """
     Merge two sorted lists.
@@ -15,8 +18,21 @@ def merge(x: list[int], y: list[int]) -> list[int]:
     z = []  # a new list to copy elements into
     # FIXME: fill out the loop so you merge the lists
     # until one of them is empty
+
     while i < len(x) and j < len(y):
-        break  # FIXME: you shouldn't just break here
+        if x[i] <= y[j]: 
+            z.append(x[i])
+            i += 1
+        if y[j] <= x[i]: 
+            z.append(y[j])
+            j += 1
+        if i < len(x) and j == len(y):
+            z.append(x[i])
+        if j < len(y) and i == len(x):
+            z.append(x[j])
+ 
+        
+    # FIXME: you shouldn't just break here
     # At least one of the lists is empty now. Copy the
     # remainder of the other into z.
     return z
