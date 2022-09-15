@@ -3,6 +3,8 @@
 
 from ast import Break
 
+i = 0
+j = 0
 
 def merge(x: list[int], y: list[int]) -> list[int]:
     """
@@ -23,16 +25,19 @@ def merge(x: list[int], y: list[int]) -> list[int]:
         if x[i] <= y[j]: 
             z.append(x[i])
             i += 1
-        if y[j] <= x[i]: 
+        elif y[j] <= x[i]: 
             z.append(y[j])
             j += 1
-        if i < len(x) and j == len(y):
-            z.append(x[i])
-        if j < len(y) and i == len(x):
-            z.append(x[j])
+    z.extend(x[i:])
+    z.extend(y[j:])
  
         
     # FIXME: you shouldn't just break here
     # At least one of the lists is empty now. Copy the
     # remainder of the other into z.
     return z
+
+#print(merge([1, 2, 4, 6], [1, 3, 4, 5]))
+
+#print(merge([1, 4], [1, 3, 4, 6]))
+
